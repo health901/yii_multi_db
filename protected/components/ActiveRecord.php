@@ -20,7 +20,7 @@ class ActiveRecord extends CActiveRecord {
             return parent::getDbConnection();
         }
         $module = Yii::app()->getModule($this->belongTo);
-        if (!($module  instanceof WebModule) && empty($module->db)) {
+        if (!($module instanceof WebModule) || empty($module->db)) {
             return parent::getDbConnection();
         }
         if (self::$db !== null) {
